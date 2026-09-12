@@ -1,0 +1,26 @@
+# 调研中间产物（不随仓库分发，skill 目录内已含提炼后的成果）
+.research/
+
+# 论文原件（体积大且非本仓库产物）
+*.pdf
+!assets/**/*.pdf
+
+# 临时文件
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+node_modules/
+
+# 安装器测试产物
+.claude/
+
+# 自检用样本（含故意违规内容，仅本地测试用）
+.research/bad_paper_sample.txt

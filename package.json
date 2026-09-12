@@ -1,0 +1,40 @@
+{
+  "name": "cumcm-paper-skill",
+  "version": "1.0.0",
+  "description": "中国大学生数学建模竞赛（CUMCM/国赛）论文写作 Skill — 面向 Claude Code 的国赛论文写作规范、摘要范式、章节骨架与查重红线检查工具",
+  "bin": {
+    "cumcm-paper-skill": "bin/install.js"
+  },
+  "files": [
+    "bin",
+    "skill",
+    "assets",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "postinstall": "node bin/install.js --silent"
+  },
+  "keywords": [
+    "cumcm",
+    "数学建模",
+    "国赛",
+    "claude-code",
+    "skill",
+    "paper",
+    "paper-writing"
+  ],
+  "author": "Fishman-free",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fishman-free/PAPER-SKILL.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Fishman-free/PAPER-SKILL/issues"
+  },
+  "homepage": "https://github.com/Fishman-free/PAPER-SKILL#readme",
+  "engines": {
+    "node": ">=16"
+  }
+}

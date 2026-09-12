@@ -1,0 +1,125 @@
+% !TeX program = xelatex
+\documentclass{cumcmthesis}
+% \documentclass[withoutpreface,bwprint]{cumcmthesis} %去掉封面与编号页，电子版提交的时候使用。
+
+
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{url}   % 网页链接
+\usepackage{subcaption} % 子标题、子图、子表格
+\usepackage{pifont}%提供大量的特殊符号、图标
+\usepackage{listings}%代码高亮包
+\usepackage{float} %管控图片、图表浮动体
+%% 下面是参赛的基本信息填写
+\title{全国大学生数学建模竞赛编写的 \LaTeX{} 模板}
+\tihao{A}
+\baominghao{xxxx}
+\schoolname{XX大学}
+\membera{ }
+\memberb{ }
+\memberc{ }
+\supervisor{ }
+\yearinput{2026}
+\monthinput{09}
+\dayinput{13}
+
+\begin{document}
+
+ \maketitle  % 输出标题区（标题 / 作者 / 日期），必须在 document 环境内
+ \begin{abstract}
+随着xx的发展,xx问题是xx中的重要研究课题（或xx现象日益严重）。本文针对xx中的问题，基于xx和xx思想,通过确定xx、xx、xx等指标，以xx、xx为目标建立了xx模型，并使用xx算法对模型进行求解。
+%模板中只是提醒需要注意，而不是真的需要加粗字体
+\textbf{针对问题一，}
+
+\textbf{针对问题二，}
+
+\textbf{针对问题三，}
+
+
+最后,我们对提出的模型进行全面的评价：本文的模型贴合实际,能合理解决提出的问题,具有实用性强,算法效率高等特点,该模型在xx,xx,xx方面也能使用。
+
+\textbf{关键词： }关键词1  关键词2  关键词3  关键词4  关键词5
+%此处是提醒同学可以查看具体的网址链接，而不是真的需要贴一个链接
+\href{https://www.mcm.edu.cn/html_cn/node/4cd596519c9eb9fbd866398f6df0caa3.html}{全国大学生数学建模竞赛论文格式规范（2026年修订稿）}
+
+\end{abstract}
+
+
+\begin{enumerate} 
+\item 标题：写成“基于××模型/方法的××问题研究”，也可根据论文内容自行拟定。
+\item 摘要结构：建议采用“背景—方法—结果—结论”四步法。
+\item 篇幅要求：摘要与关键词原则上控制在一页内，不写英文摘要。
+\item 关键词：一般选取3～5个，以核心模型、关键算法和研究对象为主。
+\item 写作原则：按照题目各问依次展开，重点突出模型、算法和具体结果。
+\end{enumerate}
+
+论文摘要不是论文目录，也不是正文的简单压缩。
+
+第一步：背景
+
+简要说明研究对象、问题背景和主要任务，通常用1～2句话完成。背景不宜过长，不要大段照抄题目。
+
+参考句式：针对××背景下的××问题，本文围绕××、××和××等任务展开研究。
+
+第二步：方法
+
+按照问题一、问题二、问题三的顺序，分别说明所采用的数据处理方法、数学模型和求解算法。
+
+参考句式：针对问题一，首先对××数据进行预处理，选取××指标，\textbf{建立××模型}，并\textbf{采用××算法}进行求解。
+注意写出具体的模型或算法名称，避免只写“建立数学模型”“利用软件求解”。
+
+第三步：结果
+
+给出各问题的关键答案，包括主要数值、排序、预测结果、最优方案、误差或评价指标。结果应与前面的方法一一对应。
+
+参考句式：结果表明，\textbf{最优方案为××}，\textbf{其目标函数值为××}；\textbf{模型预测误差为××\%}。
+避免使用“结果较好”“模型合理”“得到满意结果”等模糊表述。
+
+第四步：结论
+
+简要说明模型的准确性、稳定性、优缺点及推广价值，最好结合误差分析、灵敏度分析或对比实验进行评价。
+
+参考句式：灵敏度分析表明，主要参数在一定范围内变化时，模型结果保持稳定，可进一步推广至××问题。
+
+每个问题尽量按照“问题任务＋模型方法＋求解结果”组织，整体做到：
+
+\textbf{背景要短，方法要准，结果要实，结论要有依据。}
+
+官方要求摘要页包含论文题目、摘要和关键词，原则上不超过一页。
+
+
+
+\newpage
+
+%% ------------------------------------------------------------
+%% 正文各节（Writer 分节生成，顺序固定，不得增删调序）
+%% 以下各节内容拆分自 example.tex（原版本），源文件 example.tex 保持不动
+%% ------------------------------------------------------------
+\input{chapter/1_restatement}   % 一、问题重述
+\input{chapter/2_analysis}      % 二、问题分析
+\input{chapter/3_assumptions}   % 三、模型假设
+\input{chapter/4_notation}      % 四、符号说明
+\input{chapter/5_model_q1}      % 五、问题一模型的建立与求解
+\input{chapter/6_model_q2}      % 六、问题二模型的建立与求解
+\input{chapter/7_model_q3}      % 七、问题三模型的建立与求解
+\input{chapter/8_sensitivity}   % 八、灵敏度分析
+\input{chapter/9_evaluation}    % 九、模型评价与推广
+\input{chapter/10_ai_declaration} %十、AI声明
+\input{chapter/11_reference} %十一、参考文献
+%% ------------------------------------------------------------
+%% 参考文献：GB/T 7714-2015 数字顺序制（gbt7714 宏包 + bibtex）
+%% 只允许引用真实存在的文献；条目写入 references.bib
+%% ------------------------------------------------------------
+%%\nocite{*} % example.tex 原未使用 \cite，此处列出全部参考文献
+%%\bibliographystyle{gbt7714-numerical}
+%%\bibliography{references}
+
+%% ------------------------------------------------------------
+%% 附录：核心代码（listings 排版，见 mmastyle 的 mmacode 样式）
+%% + AI 使用声明（国赛 risk_extra 硬性要求，确定性模板，勿删）
+%% ------------------------------------------------------------
+\appendix
+\input{chapter/A_appendix}
+%\input{chapter/B_code}
+% \input{chapter/C_ai_declaration}
+
+\end{document}

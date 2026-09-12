@@ -1,0 +1,37 @@
+\section{符号说明}
+\begin{table}[!htbp]%[!htbp] 是浮动体位置优先级。! 表示“强制忽略LaTeX内部浮动静默限制”，h（here，这里）、t（top，页面顶部）、b（bottom，页面底部）、p（单独成页）。
+    \caption{符号说明}\label{tab:demo} \centering %\caption 生成表头标题，\label 生成引用标签，\centering 让表格在页面水平居中。
+    \renewcommand{\arraystretch}{1.0}%默认行高的一倍，可以依据公式情况调整
+    \begin{tabularx}{0.7\textwidth}{%表格总宽度占页面宽度的70%（给右侧留白批注空间）。
+        >{\centering\arraybackslash}X %三列均为“自动拉伸且居中”的弹性列。
+        >{\centering\arraybackslash}X
+        >{\centering\arraybackslash}X
+    }
+        \toprule[1.5pt]%三线表中顶部最粗，底部次之，中间最细
+        符号 & 含义 & 单位 \\% &表示分隔，\\表示换行
+        \midrule[1pt]
+        \addlinespace %\addlinespace 的作用是在表格行与行之间增加额外的垂直空白间距。
+        \addlinespace
+        \addlinespace
+        \addlinespace
+        \bottomrule[1.5pt]
+    \end{tabularx}
+\end{table}
+% 注意：\caption 必须在表格环境内，且表题排在表格【上方】（国赛惯例）。
+% 下方示例已留出符号行，实际写作时按需增删 \addlinespace 之间的行。
+\begin{enumerate}[label=(\arabic*), leftmargin=2.5em, itemsep=0.3em]
+\item \textbf{只列重要符号。} 将正文中多次使用、含义关键的变量、参数和指标集中列出，临时变量一般不必放入符号说明。
+
+\item \textbf{符号与含义一一对应。} 每个符号应说明其具体含义，必要时标明单位，避免只写模糊解释。
+
+\item \textbf{全文保持统一。} 同一符号在不同章节中应表示同一含义，不要中途更换符号或一符多义。
+
+\item \textbf{注意符号规范。} 变量通常使用斜体字母，向量、矩阵和集合可根据全文习惯统一表示。
+
+\item \textbf{首次出现仍要解释。} 即使已经在符号说明表中列出，正文第一次使用时也建议简要说明。
+
+\item \textbf{控制篇幅。} 符号说明应尽量控制在1页以内，避免把所有临时变量都列入表中。
+\end{enumerate}
+\textbf{符号说明的作用，是帮助读者快速查找变量含义，而不是代替正文解释。}
+
+\textbf{写作原则：重要、统一、清楚、简洁，尽量不超过1页。}

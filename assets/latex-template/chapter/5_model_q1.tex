@@ -1,0 +1,105 @@
+\section{问题一模型的建立与求解}
+
+\subsection{数据预处理}
+\subsubsection{缺失值处理}
+\subsubsection{数据清洗与标准化}
+\begin{enumerate}[label=(\arabic*), leftmargin=2.5em, itemsep=0.3em]
+\item \textbf{说明数据来源。} 明确数据由赛题附件、公开数据库、文献资料或自主采集获得；使用外部数据时，应在正文和参考文献中注明来源。
+
+\item \textbf{先检查数据质量。} 建模前应分析数据是否存在缺失值、异常值、重复值、格式错误及量纲不一致等问题。
+
+\item \textbf{处理方法要有依据。} 对缺失值填补、异常值剔除、数据平滑等操作，应说明采用的方法和理由，不能随意修改原始数据。
+
+\item \textbf{根据模型需要进行转换。} 若不同指标的量纲、数量级或正负方向不一致，可进行正向化、标准化或归一化处理。
+
+\item \textbf{保留有效信息。} 数据预处理应减少噪声和无效信息，但不能过度处理，更不能为了得到理想结果而人为调整数据。
+
+\item \textbf{保证过程可复现。} 关键处理步骤、参数设置和处理前后的数据变化应交代清楚；较长的程序和完整数据可放入附录或支撑材料。
+\end{enumerate}
+
+\textbf{数据预处理的目的，是提高数据质量并满足模型要求，而不是改变数据所反映的客观规律。}
+
+\textbf{常见处理内容}
+
+\ding{172} \textbf{缺失值处理} 根据缺失比例和数据特点，采用删除、均值填补、插值或模型预测等方法。
+
+\ding{173} \textbf{异常值处理} 可通过箱线图、(3$\sigma$) 原则、四分位距或专业阈值识别异常值，并结合实际背景判断是否修正或剔除。
+
+\ding{174} \textbf{数据清洗与转换} 统一日期、单位和数据格式，删除重复记录，必要时进行对数变换、平滑处理或变量编码。
+
+\ding{175} \textbf{无量纲化处理} 评价类和机器学习类问题中，可采用极差标准化、Z-score标准化等方法消除量纲影响。
+
+\textbf{写作提示}
+
+\begin{enumerate}[label=(\arabic*), leftmargin=2.5em, itemsep=0.3em]
+\item 只写与后续建模有关的处理步骤，不必罗列所有软件操作。
+
+\item 预处理方法应与数据特点相匹配，避免机械套用固定方法。
+
+\item 建议通过表格或图形展示处理前后的主要变化，但图表不宜过多。
+
+\item 若原始数据质量较好，也应简要说明已完成完整性和异常性检查。
+\end{enumerate}
+
+\textbf{写作原则：来源清楚、处理合理、过程透明、结果可信。}
+
+\subsubsection{问题一求解思路}
+% 原文档此处为 OLE 公式对象（Equation Editor 3.0），无法自动转为 LaTeX 数学源码。
+% 已导出其预览图：gq_template_images/equation_ole.wmf（可用 Inkscape 等转 PNG 后替换下方 includegraphics）。
+% \includegraphics[width=0.5\textwidth]{gq_template_images/equation_ole.wmf}
+\begin{equation}                                % 行间带编号
+  a^2 + b^2 = c^2
+\end{equation}
+\subsubsection{问题一模型建立}
+\subsubsection{问题一模型求解与分析}
+% 图表示例：图题必须放在图【下方】，正文必须引用并分析（不要只放图不说话）。
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=.6\textwidth]{f1}
+    \caption{示例图：图题写在图下方}
+    \label{fig:demo}
+\end{figure}
+\begin{enumerate}[label=(\arabic*), leftmargin=2.5em, itemsep=0.3em]
+\item \textbf{模型应紧扣问题。} 根据问题分析和模型假设，明确决策变量、目标函数、约束条件或变量之间的数学关系。
+
+\item \textbf{说明模型选择依据。} 简要解释所选模型为什么适合本题，避免只给出模型名称或机械套用现成方法。
+
+\item \textbf{推导过程清晰。} 重要公式应说明来源和含义，公式之间要有逻辑联系，不能只堆砌公式而缺少文字解释。
+
+\item \textbf{求解方法明确。} 说明采用的算法、软件及主要步骤，必要时给出参数设置、终止条件和计算流程。
+
+\item \textbf{结果完整可信。} 根据题目要求给出数值、方案、图表或评价结果，并结合实际背景解释其含义。
+
+\item \textbf{按问题分别展开。} 建议采用“问题一模型建立与求解”“问题二模型建立与求解”等小标题，使论文结构与赛题任务保持一致。
+\end{enumerate}
+\textbf{模型建立回答“数学关系是什么”，模型求解回答“如何得到结果”。}
+
+\textbf{推荐写作结构}
+
+\ding{172} \textbf{确定变量与参数} 说明输入数据、决策变量、状态变量及主要参数的含义。
+
+\ding{173} \textbf{建立数学模型} 给出目标函数、约束条件、评价指标或变量关系，并说明公式的实际意义。
+
+\ding{174} \textbf{选择求解方法} 介绍所用算法及选择理由，说明主要计算步骤和关键参数。
+
+\ding{175} \textbf{展示求解结果} 使用表格或图形呈现核心结果，并围绕题目要求进行解释。
+
+\textbf{写作提示}
+\begin{enumerate}[label=(\arabic*), leftmargin=2.5em, itemsep=0.3em]
+\item 公式应编号，正文引用时使用“式（1）”“式（2）”等规范表述。
+
+\href{https://www.bilibili.com/video/BV1LpN2zQEo1?spm_id_from=333.788.videopod.sections&vd_source=b669ebd8251242404e23b3f8835d481e}{mathtype的安装与使用教程}
+
+%\begin{enumerate}[label=(\arabic*), leftmargin=2.5em, itemsep=0.3em]
+\item 成熟模型可以引用文献，但必须结合题目进行调整，不能直接照搬。
+
+\item 程序代码不宜大段放入正文，核心流程可用流程图或伪代码表示，完整代码放入支撑材料。
+
+\item 图表应具有标题、编号、坐标名称和单位，正文中应对重要图表进行分析。
+
+\item 结果保留合理的小数位和有效数字，避免出现无意义的过高精度。
+
+\item 不要只给计算结果，应说明结果反映的实际规律及其是否合理。
+\end{enumerate}
+
+\textbf{写作原则：模型合理、推导清楚、求解可复现、结果有解释。}
