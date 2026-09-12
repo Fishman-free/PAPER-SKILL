@@ -30,26 +30,35 @@
 
 ## 安装
 
-### 方式一：npx（推荐）
+### 方式一：npx（推荐，已实测）
 
 ```bash
-npx cumcm-paper-skill
+npx github:Fishman-free/PAPER-SKILL
 ```
 
 安装到用户级 `~/.claude/skills/cumcm-paper/`。
 
 ```bash
-# 安装到当前项目（团队共享）
-npx cumcm-paper-skill --project
+# 安装到当前项目（团队共享，随项目提交）
+npx github:Fishman-free/PAPER-SKILL --project
 
 # 覆盖已存在的安装
-npx cumcm-paper-skill --force
+npx github:Fishman-free/PAPER-SKILL --force
 
 # 卸载
-npx cumcm-paper-skill --uninstall
+npx github:Fishman-free/PAPER-SKILL --uninstall
 ```
 
-### 方式二：手动安装
+### 方式二：全局安装（长期使用）
+
+```bash
+npm install -g github:Fishman-free/PAPER-SKILL
+cumcm-paper-skill              # 安装到用户级
+cumcm-paper-skill --project    # 安装到当前项目
+cumcm-paper-skill --uninstall  # 卸载
+```
+
+### 方式三：手动安装
 
 ```bash
 git clone https://github.com/Fishman-free/PAPER-SKILL.git
@@ -65,13 +74,25 @@ Copy-Item -Recurse PAPER-SKILL\skill\cumcm-paper $env:USERPROFILE\.claude\skills
 
 ### 验证安装
 
-重启 Claude Code，然后输入：
+重启 Claude Code，输入 `/help` 应能在 skill 列表中看到 `cumcm-paper`；
+或直接提问「国赛论文的摘要该怎么写」自动触发。
+
+### 安装了什么
 
 ```
-/help
+~/.claude/skills/cumcm-paper/
+├── SKILL.md                              # 主技能文件
+├── references/
+│   ├── 02-评阅标准与红线.md                # 官方四条标准、评审流程、查重门槛、AI 规定、参赛规则
+│   ├── 03-格式技术规范.md                  # 2026 修订稿十三条、匿名清单、图表公式规范
+│   ├── 04-分章写法.md                      # 逐章「要回答什么/必须含什么/绝不要写什么」
+│   ├── 05-摘要范式.md                      # 摘要结构公式、三件套、打磨流程、「洗苹果」判据
+│   └── 06-获奖论文实例拆解.md              # 3 篇官方优秀论文的骨架对照与反模式
+├── scripts/
+│   └── check_paper.py                    # 合规性自动校验脚本
+└── assets/
+    └── latex-template/                   # cumcmthesis 模板 + 13 个分章节源码
 ```
-
-应能在 skill 列表中看到 `cumcm-paper`。或者直接提问「国赛论文的摘要该怎么写」触发它。
 
 ---
 

@@ -22,6 +22,9 @@ const os = require('os');
 const SKILL_NAME = 'cumcm-paper';
 const PKG_ROOT = path.resolve(__dirname, '..');
 const SRC_SKILL = path.join(PKG_ROOT, 'skill', SKILL_NAME);
+// LaTeX 模板随 skill 一起安装，放在 skill 目录内，保证 SKILL.md 的相对引用不断链
+const SRC_TEMPLATE = path.join(PKG_ROOT, 'assets', 'latex-template');
+const TEMPLATE_SUBDIR = 'assets/latex-template';
 
 const args = process.argv.slice(2);
 const has = (flag) => args.includes(flag);
@@ -128,12 +131,25 @@ function main() {
 
   if (fs.existsSync(dest)) fs.rmSync(dest, { recursive: true, force: true });
 
+  // 1) 技能主体（SKILL.md / references / scripts）
   copyRecursive(SRC_SKILL, dest);
+
+  // 2) LaTeX 模板 — 必须装进 skill 目录内，否则 SKILL.md 里的相对引用会断链
+  const tplDest = path.join(dest, TEMPLATE_SUBDIR);
+  let tplCount = 0;
+  if (fs.existsSync(SRC_TEMPLATE)) {
+    copyRecursive(SRC_TEMPLATE, tplDest);
+    tplCount = countFiles(tplDest);
+  }
 
   const n = countFiles(dest);
   log(`${C.green}✓ 安装完成${C.reset}`);
   log(`  ${C.dim}位置:${C.reset} ${dest}`);
-  log(`  ${C.dim}文件:${C.reset} ${n} 个`);
+  log(`  ${C.dim}文件:${C.reset} ${n} 个` +
+      (tplCount ? `（含 LaTeX 模板 ${tplCount} 个）` : ''));
+  if (!tplCount) {
+    log(`  ${C.yellow}⚠ 未找到 LaTeX 模板，模板相关的相对引用将不可用${C.reset}`);
+  }
   log('');
   log(`  ${C.cyan}在 Claude Code 中试试：${C.reset}`);
   log(`  ${C.dim}· 帮我检查这篇国赛论文的摘要${C.reset}`);

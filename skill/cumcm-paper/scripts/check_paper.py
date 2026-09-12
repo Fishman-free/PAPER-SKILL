@@ -439,6 +439,19 @@ def check_latex(main_path, chapters_dir, report):
 
 # ---------------------------------------------------------------- 文本检查
 
+# 模糊表述模式：命中即提示（国赛摘要与结果分析的高频扣分点）
+#   覆盖「结果较好 / 得到了较好的结果 / 更加满意的结论 / 效果理想 / 模型合理」等变体
+VAGUE_RE = re.compile(
+    r"("
+    r"[较更]为?(?:好|优|佳|理想|准确|合理|满意)"
+    r"|良好|优异|不错|尚可|较优|满意"
+    r"|符合要求|达到了?预期|效果(?:理想|很好|不错)"
+    r"|模型合理|结果合理|方案合理"
+    r"|具有一定的?[^\n，。；]{0,8}(?:性|价值)"
+    r")"
+)
+
+
 def check_text(text, report, label):
     # 目录
     if re.search(r"^\s*目\s*录\s*$", text, re.M):
@@ -461,17 +474,33 @@ def check_text(text, report, label):
     check_anonymity_lines(text, report, label)
 
     # 模糊表述（摘要/结果里最常见）
-    vague = ["结果较好", "结果良好", "模型合理", "得到满意结果", "效果理想",
-             "较为准确", "符合要求", "达到了预期"]
-    hits = [v for v in vague if v in text]
-    if hits:
+    # ⚠️ 用模式而非固定子串：固定列表会漏掉「得到了较好的结果」「更加满意的结论」等变体
+    vague_hits = []
+    for m in VAGUE_RE.finditer(text):
+        start = max(0, m.start() - 20)
+        end = min(len(text), m.end() + 20)
+        vague_hits.append((m.group(0), text[start:end].replace("\n", " ").strip()))
+
+    if vague_hits:
+        uniq = sorted({h[0] for h in vague_hits})
         report.warn(
             "VAGUE",
-            f"发现 {len(hits)} 类模糊表述，应替换为具体数值或机制描述（{label}）",
-            "命中： " + "、".join(hits),
+            f"发现 {len(vague_hits)} 处模糊表述（{len(uniq)} 类），应替换为具体数值或机制描述（{label}）",
+            "命中： " + "、".join(uniq[:10]) +
+            ("\n示例： …" + vague_hits[0][1] + "…" if vague_hits else ""),
         )
     else:
         report.ok("VAGUE", f"未发现常见模糊表述（{label}）")
+
+    # 摘要必备要素：关键词（官方规定摘要须含标题和关键词）
+    if re.search(r"关键词|关键字|Keywords?", text):
+        report.ok("ABS-KW", f"发现关键词（{label}）")
+    else:
+        report.warn(
+            "ABS-KW",
+            f"未发现「关键词」——官方规定摘要须含标题和关键词（{label}）",
+            "关键词一般 3–6 个，取核心模型名、关键算法名与研究对象",
+        )
 
 
 # ---------------------------------------------------------------- PDF 检查
